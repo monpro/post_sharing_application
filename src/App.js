@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import Header from "./common";
+import {GlobalStyle} from "./statics/iconfont/iconfont";
 
 class App extends Component {
   render() {
     return (
-        <Header/>
+        <div>
+          <GlobalStyle/>
+          <Header/>
+        </div>
     );
   }
 }

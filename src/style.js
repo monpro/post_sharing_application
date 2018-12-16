@@ -50,7 +50,3 @@ export const GlobalStyle = createGlobalStyle`
   }
     }
 `;
-//
-// .mac{
-//   background-color: rebeccapurple;
-// }
