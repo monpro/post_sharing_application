@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import logoPic from "../statics/logo.png"
+import logoPic from "../../statics/logo.png"
 export const HeaderWrapper = styled.div`
     position: relative;
     height:58px;
@@ -47,21 +47,7 @@ export const NavItem = styled.div`
     `;
 export const SearchWrapper = styled.div`
     position: relative;
-    float: left;
-    .slide-enter{
-        width: 160px;
-        transition: all .2s ease-out;
-    }
-    .slide-enter-active{
-        width: 240px;
-    }
-    .slide-exit{
-        transition: all .2s ease-out;
-    }
-    .slide-exit-active{
-        width: 160px;
-    }
-    
+    float: left; 
     .iconfont{
         position: absolute;
         right: 5px;
@@ -77,7 +63,8 @@ export const SearchWrapper = styled.div`
         }
     }
 
-`
+`;
+
 export const NavSearch = styled.input.attrs({
     placeholder:"search"
 })`
@@ -99,14 +86,27 @@ export const NavSearch = styled.input.attrs({
     &.focused{
         width: 240px;
     }
-`
+    &.slide-enter{
+        width: 160px;
+        transition: all .2s ease-out;
+    }
+    &.slide-enter-active{
+        width: 240px;
+    }
+    &.slide-exit{
+        transition: all .2s ease-out;
+    }
+    &.slide-exit-active{
+        width: 160px;
+    }
+`;
 
 export const Addition = styled.div`
     position: absolute;
     right: 0px;
     top: 0px;
     height: 56px;
-`
+`;
 
 export const Button = styled.div`
     float: right;
