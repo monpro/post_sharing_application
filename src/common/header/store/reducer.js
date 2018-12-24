@@ -5,7 +5,8 @@ import {fromJS} from "immutable";
 //immutable.js object cannot be changed
 //developed by facebook
 const defaultState = fromJS({
-    focused: false
+    focused: false,
+    list:[]
 });
 
 export default (state = defaultState, action) => {
@@ -17,6 +18,9 @@ export default (state = defaultState, action) => {
     else if(action.type === actionTypes.SEARCH_BLUR){
         return state.set('focused',false);
     }
+    else if(action.type === actionTypes.CHANGE_LIST){
+        // list immutable  action.data common list
+        return state.set('list',action.data);
+    }
     return state;
-}
-
+};

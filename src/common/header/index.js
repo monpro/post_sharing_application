@@ -16,8 +16,8 @@ import {HeaderWrapper,
 import {connect} from "react-redux";
 import {actionCreators} from './store/index';
 class Header extends Component{
-     getListArea(show){
-        if(show){
+     getListArea(){
+        if(this.props.focused){
             return(
                 <SearchInfo>
                     <SearchInfoTitle>
@@ -25,14 +25,11 @@ class Header extends Component{
                         <SearchInfoSwitch>Change</SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoList>
-                        <SearchInfoItem>Education</SearchInfoItem>
-                        <SearchInfoItem>Life</SearchInfoItem>
-                        <SearchInfoItem>Education</SearchInfoItem>
-                        <SearchInfoItem>Education</SearchInfoItem>
-                        <SearchInfoItem>Education</SearchInfoItem>
-                        <SearchInfoItem>Education</SearchInfoItem>
-                        <SearchInfoItem>Education</SearchInfoItem>
-                        <SearchInfoItem>Education</SearchInfoItem>
+                        {
+                            this.props.list.map((item) =>{
+                                return <SearchInfoItem key ={item}>{item}</SearchInfoItem>
+                            })
+                        }
                     </SearchInfoList>
                 </SearchInfo>
             )
@@ -65,7 +62,7 @@ class Header extends Component{
                             </NavSearch>
                         </CSSTransition>
                         <i className = {this.props.focused? 'focused iconfont': 'iconfont'}>&#xe636;</i>
-                        {this.getListArea(this.props.focused)}
+                        {this.getListArea()}
                     </SearchWrapper>
                 </Nav>
                 <Addition>
@@ -83,19 +80,19 @@ class Header extends Component{
     }
 }
 
-//stateless component
-
-
 //store state to props
 const mapStateToProps = (state) =>{
     return {
-        focused: state.getIn(['header','focused'])
+        //get data from focused in header
+        focused: state.getIn(['header','focused']),
+        list: state.getIn(['header','list'])
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return{
       handleInputFocus(){
+          dispatch(actionCreators.getList())
           dispatch(actionCreators.searchFocus());
       },
       handleInputBlur(){
