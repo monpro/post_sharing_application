@@ -86,3 +86,27 @@ export const ListInfo = styled.div`
     }
 
 `;
+
+export const RecommendWrapper = styled.div`
+    margin: 30px 0;
+    width: 280px;
+`;
+
+export const RecommendItem = styled.div`
+    width: 100%;
+    height: 100px;
+    background: url(${(props) => props.imgUrl});
+    background-size: contain;
+`;
+
+export const LoadMore = styled.div`
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #a5a5a5;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+    margin: 30px 0;
+    cursor: pointer;
+`;
