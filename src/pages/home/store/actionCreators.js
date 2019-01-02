@@ -40,3 +40,10 @@ export const getMoreList = (page) => {
         })
     }
 };
+
+export const BackTopShow = (show) =>{
+    return ({
+        type: constants.BACK_TOP_SHOW,
+        show: show
+    })
+}

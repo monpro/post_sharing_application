@@ -1,15 +1,22 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from "react-redux";
 import Topic from "./components/Topic";
 import List from "./components/List";
 import Recommend from "./components/Recommend";
 import Writer from "./components/Writer";
-import axios from "axios";
 import {actionCreators} from "./store";
-import {HomeWrapper,HomeLeft,HomeRight} from "./style"
+import {HomeWrapper,HomeLeft,HomeRight,BackTop} from "./style"
 
-class Home extends Component{
+
+//pureComponent have implemented should component update
+class Home extends PureComponent{
+
+
+    handleScrollTop(){
+        window.scrollTo(0,0);
+    }
     render() {
+        const {showScroll} = this.props;
         return(
             <HomeWrapper>
                 <HomeLeft>
@@ -22,19 +29,41 @@ class Home extends Component{
                     <Writer/>
                     right
                 </HomeRight>
+                {showScroll ? <BackTop onClick = {this.handleScrollTop}>Back to Top</BackTop>: null}
             </HomeWrapper>
         )
     }
     componentDidMount() {
         this.props.changeHomeData();
+        this.bindEvents();
 
     }
+    bindEvents(){
+        window.addEventListener("scroll", this.props.changeScrollTopShow)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.props.changeScrollTopShow);
+    }
 }
+
+
 
 const mapDispatchToProps = (dispatch) => ({
     changeHomeData(){
         const action = actionCreators.getHomeInfo();
         dispatch(action);
-    }
+    },
+    changeScrollTopShow(){
+        if(document.documentElement.scrollTop > 100){
+            dispatch(actionCreators.BackTopShow(true));
+    }else{
+            dispatch(actionCreators.BackTopShow(false))
+    }}
 });
-export default connect(null,mapDispatchToProps)(Home);
+
+const mapStateToProps = (state) => ({
+   showScroll: state.getIn(['home','showScroll'])
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

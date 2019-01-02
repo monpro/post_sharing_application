@@ -1,5 +1,6 @@
 import React ,{Component}from 'react';
 import {CSSTransition} from 'react-transition-group';
+import {Link} from "react-router-dom";
 import {HeaderWrapper,
         Logo,
         SearchInfoList,
@@ -59,7 +60,9 @@ class Header extends Component{
         const {focused, list, handleInputFocus, handleInputBlur} = this.props;
         return(
             <HeaderWrapper>
+                <Link to="/">
                 <Logo/>
+                </Link>
                 <Nav>
                     <NavItem className = "left active">Main</NavItem>
                     <NavItem className = "left">Download</NavItem>
