@@ -1,6 +1,4 @@
 {
-  "success": true,
-  "data": ["rain","snow","nba","nfl","boxing","lebron","node","michael","bulls","abc",
-    "def","dfd","example","win","lose"]
-
+	"success": true,
+	"data": ["SNL","Football","Roger","Martin","vue","Shazam","Tomi Lahren","Pat Maho","Zion","Shameless","Andy","Gisele","Hill","Cooper","spring","Matthew","Theron","Java","Python","ETl","Education","book","life","redis","algorithm","PHP","Uni","docker","EOS","kotlin"]
 }

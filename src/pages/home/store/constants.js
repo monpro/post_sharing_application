@@ -1,3 +1,3 @@
-export const CHANGE_HOME_DATA = "home/change_home_data";
-export const CHANGE_ARTICLE_LIST = "home/change_article_list";
-export const BACK_TOP_SHOW = "home/back_top_show";
+export const CHANGE_HOME_DATA = 'home/CHANGE_HOME_DATA';
+export const ADD_ARTICLE_LIST = 'home/ADD_ARTICLE_LIST';
+export const TOGGLE_SCROLL_TOP = 'home/TOGGLE_SCROLL_TOP';
